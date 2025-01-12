@@ -98,12 +98,6 @@ export function TokenSelectorStates({
           includeNative={includeNative}
           showPinnedTokens={!hidePinnedTokens}
         />
-        <TokenSelectorTrendingTokens
-          chainId={chainId}
-          onSelect={onSelect}
-          onShowInfo={onShowInfo}
-          selected={selected}
-        />
       </>
     )
   }
@@ -157,13 +151,6 @@ export function TokenSelectorStates({
             includeNative={includeNative}
           />
         ) : null}
-
-        <TokenSelectorTrendingTokens
-          chainId={chainId}
-          onSelect={onSelect}
-          onShowInfo={onShowInfo}
-          selected={selected}
-        />
       </>
     )
   }

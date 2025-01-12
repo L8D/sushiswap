@@ -1,6 +1,7 @@
 // import { usePinnedTokens } from '@sushiswap/hooks'
 import { useMemo } from 'react'
-import type { ChainId } from 'sushi/chain'
+import { ChainId } from 'sushi/chain'
+import { Token } from 'sushi/currency'
 import { DEFAULT_BASES } from 'sushi/config'
 
 interface UseChipTokens {
@@ -16,7 +17,16 @@ export function useChipTokens({
   includeNative = true,
   // showPinnedTokens = true,
 }: UseChipTokens) {
-  const defaultBases = DEFAULT_BASES[chainId]
+  const defaultBases = [
+    ...DEFAULT_BASES[chainId],
+    new Token({
+      chainId: ChainId.ETHEREUM,
+      address: '0x6e1a19f235be7ed8e3369ef73b196c07257494de',
+      decimals: 18,
+      symbol: 'WFIL',
+      name: 'Wrapped Filecoin',
+    })
+  ]
 
   // const {} = usePinnedTokens()
 

@@ -19,12 +19,13 @@ import { useTrade as useApiTrade } from 'src/lib/hooks/react-query'
 import { useSlippageTolerance } from 'src/lib/hooks/useSlippageTolerance'
 import { useTokenWithCache } from 'src/lib/wagmi/hooks/tokens/useTokenWithCache'
 import { ChainId } from 'sushi/chain'
+
 import {
   defaultCurrency,
   defaultQuoteCurrency,
   isWNativeSupported,
 } from 'sushi/config'
-import { Amount, Native, Type, tryParseAmount } from 'sushi/currency'
+import { Amount, Native, Type, tryParseAmount, USDC, Token } from 'sushi/currency'
 import { Percent, ZERO } from 'sushi/math'
 import { Address, isAddress } from 'viem'
 import { useAccount, useGasPrice } from 'wagmi'
@@ -101,10 +102,19 @@ const DerivedstateSimpleSwapProvider: FC<DerivedStateSimpleSwapProviderProps> =
       const params = new URLSearchParams(searchParams)
 
       if (!params.has('token0')) {
-        params.set('token0', getDefaultCurrency(chainId))
+        // params.set('token0', getDefaultCurrency(chainId))
+        params.set('token0', getTokenAsString(USDC[ChainId.ETHEREUM]));
       }
       if (!params.has('token1')) {
-        params.set('token1', getQuoteCurrency(chainId))
+        // params.set('token1', getQuoteCurrency(chainId))
+        params.set('token1',
+    getTokenAsString(new Token({
+      chainId: ChainId.ETHEREUM,
+      address: '0x6e1a19f235be7ed8e3369ef73b196c07257494de',
+      decimals: 18,
+      symbol: 'WFIL',
+      name: 'Wrapped Filecoin',
+    })))
       }
       return params
     }, [chainId, searchParams])

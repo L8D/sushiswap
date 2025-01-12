@@ -17,7 +17,6 @@ export const SimpleSwapWidget = () => {
       <SimpleSwapBridgeBanner />
       <SimpleSwapHeader />
       <div className="flex items-center justify-between">
-        <SwapModeButtons />
         <SimpleSwapSettingsOverlay />
       </div>
       <SwapMaintenanceMessage />
@@ -28,7 +27,6 @@ export const SimpleSwapWidget = () => {
         <SimpleSwapTradeButton />
       </div>
       <SimpleSwapTradeStats />
-      <StrapiBanner />
       <SimpleSwapTokenNotFoundDialog />
     </div>
   )

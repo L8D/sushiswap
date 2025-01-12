@@ -128,23 +128,9 @@ export const AMM_SUPPORTED_CHAIN_IDS = SUSHISWAP_SUPPORTED_CHAIN_IDS.filter(
     !DISABLED_CHAIN_IDS.includes(c as (typeof DISABLED_CHAIN_IDS)[number]),
 )
 
-export const SUPPORTED_CHAIN_IDS = Array.from(
-  new Set([
-    ...PREFERRED_CHAINID_ORDER.filter((el) =>
-      CHAIN_IDS.includes(el as (typeof CHAIN_IDS)[number]),
-    ),
-    ...CHAIN_IDS,
-  ]),
-).filter(
-  (
-    c,
-  ): c is Exclude<
-    (typeof CHAIN_IDS)[number],
-    (typeof TESTNET_CHAIN_IDS)[number] | (typeof DISABLED_CHAIN_IDS)[number]
-  > =>
-    !TESTNET_CHAIN_IDS.includes(c as (typeof TESTNET_CHAIN_IDS)[number]) &&
-    !DISABLED_CHAIN_IDS.includes(c as (typeof DISABLED_CHAIN_IDS)[number]),
-)
+export const SUPPORTED_CHAIN_IDS = [
+  ChainId.ETHEREUM
+]
 
 export type SupportedChainId = (typeof SUPPORTED_CHAIN_IDS)[number]
 export const isSupportedChainId = (
@@ -154,8 +140,6 @@ export const isSupportedChainId = (
 
 const UNSORTED_SUPPORTED_NETWORKS = [
   ...SUPPORTED_CHAIN_IDS,
-  NonStandardChainId.APTOS,
-  NonStandardChainId.TRON,
 ].filter(
   (c) => !DISABLED_CHAIN_IDS.includes(c as (typeof DISABLED_CHAIN_IDS)[number]),
 )

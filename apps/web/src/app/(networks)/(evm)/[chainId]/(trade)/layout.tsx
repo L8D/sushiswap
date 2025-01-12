@@ -11,7 +11,7 @@ export default function TradeLayout({
 
   return (
     <Providers>
-      <SidebarProvider>
+      <SidebarProvider defaultOpen={false}>
         <Header chainId={chainId} />
         {children}
       </SidebarProvider>
