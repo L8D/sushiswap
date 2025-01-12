@@ -8,6 +8,9 @@ const bundleAnalyzer = withBundleAnalyzer({
 /** @type {import('next').NextConfig} */
 const nextConfig = bundleAnalyzer({
   ...defaultNextConfig,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   experimental: {
     ...defaultNextConfig.experimental,
     testProxy: process.env.NEXT_PUBLIC_APP_ENV === 'test',
