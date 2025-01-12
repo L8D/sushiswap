@@ -16,9 +16,7 @@ const isProduction =
   process.env.NEXT_PUBLIC_APP_ENV !== 'test'
 
 if (isProduction) {
-  if (!process.env.NEXT_PUBLIC_FUUL_API_KEY) {
-    throw new Error('NEXT_PUBLIC_FUUL_API_KEY is not set')
-  } else {
+  if (process.env.NEXT_PUBLIC_FUUL_API_KEY) {
     Fuul.init({ apiKey: process.env.NEXT_PUBLIC_FUUL_API_KEY as string })
   }
 }
